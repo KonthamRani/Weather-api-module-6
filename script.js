@@ -1,15 +1,16 @@
 
-function submitted(loc,tok) {
+function submitted(loc, tok) {
     // let url = `http://api.weatherstack.com/current?access_key=${tok}&query=${loc}`
-    let url=`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${loc}?unitGroup=metric&key=${tok}&contentType=json`
+    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${loc}?unitGroup=metric&key=${tok}&contentType=json`
 
     let weatherData;
     fetch(url)
-        .then(data => { 
-            if(document.getElementById('location').value==" "){
+        .then(data => {
+            if (document.getElementById('location').value == " ") {
                 alert("Please enter location")
             }
-            return data.json() }
+            return data.json()
+        }
         )
 
         .then(json => {
@@ -34,29 +35,45 @@ function submitted(loc,tok) {
         }
         )
         .catch(error => {
-            document.getElementById('success').innerText = ""
-            alert("Failed to load Weather info")
-            throw(error);
+            makingValuesEmpty();
+            document.getElementById('success').innerText = " "
+            alert("Failed to load Weather info");
+            throw (error);
         })
-   
+
 
 }
 
-async function accesskey(){
+async function accesskey() {
     const locat = document.getElementById('location').value;
- 
+
     const token = document.getElementById('token').value;
-    await checkforerror(locat,token)
+    await checkforerror(locat, token)
 }
-async function checkforerror(location,key){
-    
-    if(location ==""){
+async function checkforerror(location, key) {
+
+    if (location == "") {
         alert("Please Enter Location")
     }
-    else if (key ==""){
+    else if (key == "") {
         alert("Please Enter Access Key")
     }
-    else{
-        submitted(location,key);
+    else {
+        submitted(location, key);
     }
+}
+function makingValuesEmpty() {
+
+    document.getElementById('loca').innerText = " "
+    document.getElementById('lat').innerText = " "
+    document.getElementById('long').innerText = " "
+
+    document.getElementById('timezone').innerText = " "
+    document.getElementById('windSpeed').innerText = " "
+    document.getElementById('pressure').innerText = " "
+    document.getElementById('humidity').innerText = " "
+
+    document.getElementById('wind_dir').innerText = " "
+    document.getElementById('uv_index').innerText = " "
+    document.getElementById('feelslike').innerText = " "
 }
