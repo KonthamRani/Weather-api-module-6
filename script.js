@@ -36,7 +36,7 @@ function submitted(loc, tok) {
         )
         .catch(error => {
             makingValuesEmpty();
-            document.getElementById('success').innerText = " "
+           
             alert("Failed to load Weather info");
             throw (error);
         })
@@ -63,7 +63,9 @@ async function checkforerror(location, key) {
     }
 }
 function makingValuesEmpty() {
-
+    document.getElementById('success').innerText = "Unable to get Data"
+    document.getElementById('success').style.color = "red"
+    document.getElementById('success').style.fontSize = "2rem";
     document.getElementById('loca').innerText = " "
     document.getElementById('lat').innerText = " "
     document.getElementById('long').innerText = " "
