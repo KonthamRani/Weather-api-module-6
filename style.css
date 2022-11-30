@@ -3,9 +3,11 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+     /* overflow: hidden; */
 }
 body{
     font-family: 'Inter', sans-serif;
+   
 }
 /* header */
 header{
@@ -99,4 +101,18 @@ tr{
     font-size: 50px;
     padding: 20px 0px;
     
+}
+@media screen and (max-width:600px) {
+
+    header h2{
+        font-size:3rem;
+    }
+    tr{
+        font-size: 1rem;
+        padding: 20px 0px;
+        
+    }
+    section h2{
+        font-size:3.25rem;
+    }
 }

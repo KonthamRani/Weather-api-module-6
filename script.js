@@ -1,6 +1,7 @@
 
 function submitted(loc,tok) {
-    let url = `http://api.weatherstack.com/current?access_key=${tok}&query=${loc}`
+    // let url = `http://api.weatherstack.com/current?access_key=${tok}&query=${loc}`
+    let url=`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${loc}?unitGroup=metric&key=${tok}&contentType=json`
 
     let weatherData;
     fetch(url)
@@ -14,21 +15,26 @@ function submitted(loc,tok) {
         .then(json => {
             console.log(json)
             weatherData = json;
-            document.getElementById('loca').innerText = weatherData.location.name
-            document.getElementById('lat').innerText = weatherData.location.lat
-            document.getElementById('long').innerText = weatherData.location.lon
+            document.getElementById('loca').innerText = weatherData.address
+            document.getElementById('lat').innerText = weatherData.latitude
+            document.getElementById('long').innerText = weatherData.longitude
 
-            document.getElementById('timezone').innerText = weatherData.location.timezone_id
-            document.getElementById('windSpeed').innerText = weatherData.current.wind_speed
-            document.getElementById('pressure').innerText = weatherData.current.pressure
-            document.getElementById('humidity').innerText = weatherData.current.humidity
+            document.getElementById('timezone').innerText = weatherData.timezone
+            document.getElementById('windSpeed').innerText = weatherData.days[0].windspeed
+            document.getElementById('pressure').innerText = weatherData.days[0].pressure
+            document.getElementById('humidity').innerText = weatherData.days[0].humidity
 
-            document.getElementById('wind_dir').innerText = weatherData.current.wind_dir
-            document.getElementById('uv_index').innerText = weatherData.current.uv_index
-            document.getElementById('feelslike').innerText = weatherData.current.feelslike
+            document.getElementById('wind_dir').innerText = weatherData.days[0].winddir
+            document.getElementById('uv_index').innerText = weatherData.days[0].uvindex
+            document.getElementById('feelslike').innerText = weatherData.days[0].feelslike
+
+            document.getElementById('success').innerText = "Scroll Down To see the data"
+            document.getElementById('success').style.color = "green"
+            document.getElementById('success').style.fontSize = "2rem";
         }
         )
         .catch(error => {
+            document.getElementById('success').innerText = ""
             alert("Failed to load Weather info")
             throw(error);
         })
@@ -36,13 +42,13 @@ function submitted(loc,tok) {
 
 }
 
-function accesskey(){
+async function accesskey(){
     const locat = document.getElementById('location').value;
  
     const token = document.getElementById('token').value;
-    checkforerror(locat,token)
+    await checkforerror(locat,token)
 }
-function checkforerror(location,key){
+async function checkforerror(location,key){
     
     if(location ==""){
         alert("Please Enter Location")
