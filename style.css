@@ -97,6 +97,9 @@ section table{
     padding: 20px;
     padding-bottom: 50px;
 }
+#long{
+    display: block;
+}
 tr{
     font-size: 50px;
     padding: 20px 0px;
@@ -105,7 +108,7 @@ tr{
 @media screen and (max-width:600px) {
 
     header h2{
-        font-size:3rem;
+        font-size:2rem;
     }
     tr{
         font-size: 1rem;
@@ -113,6 +116,19 @@ tr{
         
     }
     section h2{
-        font-size:3.25rem;
+        font-size:2rem;
+    }
+    header .textBox input{
+        height: 2rem;
+        font-size: 1rem;
+    }
+    header button
+    {
+        padding: 5px 15px;
+    border-radius: 2px;
+    font-size: 1rem;
+    }
+    #success{
+        font-size: 1rem;
     }
 }
