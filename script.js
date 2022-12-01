@@ -31,7 +31,6 @@ function submitted(loc, tok) {
 
             document.getElementById('success').innerText = "Scroll Down To see the data"
             document.getElementById('success').style.color = "green"
-            document.getElementById('success').style.fontSize = "2rem";
         }
         )
         .catch(error => {
@@ -65,7 +64,6 @@ async function checkforerror(location, key) {
 function makingValuesEmpty() {
     document.getElementById('success').innerText = "Unable to get Data"
     document.getElementById('success').style.color = "red"
-    document.getElementById('success').style.fontSize = "2rem";
     document.getElementById('loca').innerText = " "
     document.getElementById('lat').innerText = " "
     document.getElementById('long').innerText = " "

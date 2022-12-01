@@ -3,7 +3,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-     /* overflow: hidden; */
+    overflow-x: hidden;
 }
 body{
     font-family: 'Inter', sans-serif;
@@ -104,6 +104,10 @@ tr{
     font-size: 50px;
     padding: 20px 0px;
     
+}
+#success{
+   
+    font-size: 2rem;
 }
 @media screen and (max-width:600px) {
 
